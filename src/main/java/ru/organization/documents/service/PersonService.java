@@ -52,6 +52,7 @@ public class PersonService {
             BufferedOutputStream bos = null;
 
             try {
+
                 fos = new FileOutputStream("src" + File.separator + "main" + File.separator + "resources" + File.separator + "outputFiles" + File.separator
                         + this.person.getFullName() + ".txt");
                 bos = new BufferedOutputStream(fos);

@@ -18,7 +18,7 @@ public class RestEmployeesService {
     @Produces("application/json")
     @Path(value = "/all")
     public String getAllPersons() {
-        List<Person> personList = PersonGenerator.getPersonsFromXml("personsForAO.xml");
+        List<Person> personList = new PersonGenerator().getPersonsFromXml("personsForAO.xml");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(personList);
         System.out.println(json);

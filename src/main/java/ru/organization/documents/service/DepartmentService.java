@@ -38,7 +38,7 @@ public class DepartmentService {
      * @param department - департамент для сотрудников
      */
     public void fillPersonsForDepartment(Department department) {
-        List<Person> personList = PersonGenerator
+        List<Person> personList = new PersonGenerator()
                 .getPersonsFromXml("personsFor" + department.getShortName() + ".xml");
         department.setPersons(personList);
     }

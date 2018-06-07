@@ -7,6 +7,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,17 +21,14 @@ public class PersonGenerator {
      * @param pathXml - путь к xml файлу
      * @return лист сотрудников
      */
-    public static List<Person> getPersonsFromXml(String pathXml) {
+    public  List<Person> getPersonsFromXml(String pathXml) {
         List<Person> authors = new ArrayList<Person>();
 
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(PersonsContainer.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-            File file = new File("src" + File.separator + "main" + File.separator
-                    + "resources" + File.separator + "jaxbXML" + File.separator + "persons"+ File.separator + pathXml);
-
-            PersonsContainer authors1 = (PersonsContainer) unmarshaller.unmarshal(file);
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("jaxbXML" + File.separator + "persons"+ File.separator + pathXml);
+            PersonsContainer authors1 = (PersonsContainer) unmarshaller.unmarshal(is);
 
             authors = authors1.getPersons();
 

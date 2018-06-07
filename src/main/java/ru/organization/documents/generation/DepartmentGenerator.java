@@ -7,8 +7,10 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * класс генерирует департамент из xml файла.
@@ -26,9 +28,8 @@ public class DepartmentGenerator {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(DepartmentContainer.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            File file = new File("src" + File.separator + "main" + File.separator
-                    + "resources" + File.separator + "jaxbXML" + File.separator + "departments"+ File.separator + pathXml);
-            DepartmentContainer departmentContainer = (DepartmentContainer) unmarshaller.unmarshal(file);
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("jaxbXML" + File.separator + "departments"+ File.separator + pathXml);
+            DepartmentContainer departmentContainer = (DepartmentContainer) unmarshaller.unmarshal(is);
             departments = departmentContainer.getDepartments();
             System.out.println("Create departments: " + departments.size());
         } catch (JAXBException e) {

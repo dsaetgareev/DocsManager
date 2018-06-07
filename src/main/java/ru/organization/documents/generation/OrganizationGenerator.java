@@ -6,6 +6,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.io.InputStream;
 
 /**
  * класс генерирует организацию.
@@ -23,9 +24,8 @@ public class OrganizationGenerator {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Organization.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            File file = new File("src" + File.separator + "main" + File.separator
-                    + "resources" + File.separator + "jaxbXML" + File.separator + "organization"+ File.separator + pathXml);
-            organization = (Organization) unmarshaller.unmarshal(file);
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("jaxbXML" + File.separator + "organization"+ File.separator + pathXml);
+            organization = (Organization) unmarshaller.unmarshal(is);
 
         } catch (JAXBException e) {
             e.printStackTrace();
