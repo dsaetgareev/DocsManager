@@ -1,0 +1,14 @@
+<persons>
+    <person>
+        <surname>Andreev</surname>
+        <firstName>Andrei</firstName>
+        <patronymic>Andreevich</patronymic>
+        <position>worker</position>
+    </person>
+    <person>
+        <surname>Danilov</surname>
+        <firstName>Danil</firstName>
+        <patronymic>Danilovich</patronymic>
+        <position>director</position>
+    </person>
+</persons>

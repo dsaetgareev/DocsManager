@@ -1,4 +1,4 @@
-package ru.dinis.documents.exception;
+package ru.organization.documents.exception;
 
 public class DocumentExistsException extends Exception {
 

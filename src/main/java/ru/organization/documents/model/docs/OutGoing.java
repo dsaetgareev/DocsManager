@@ -1,16 +1,26 @@
-package ru.dinis.documents.model;
+package ru.organization.documents.model.docs;
 
+import ru.organization.documents.model.staff.Person;
+
+/**
+ * outgoing document.
+ */
 public class OutGoing extends Document {
 
+    /**
+     * destination of document.
+     */
     private Person destination;
-
+    /**
+     * delivery method.
+     */
     private String deliveryMethod;
 
 
     @Override
     public String toString() {
-        return super.toString() + " Адресат: " + this.destination.getName()
-                + ". Способ доставки: " + this.deliveryMethod;
+        return super.toString() + "\n         - Адресат: " + this.destination.getFullName()
+                + ".\n         - Способ доставки: " + this.deliveryMethod;
     }
 
     public Person getDestination() {

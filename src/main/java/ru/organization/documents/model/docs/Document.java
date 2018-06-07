@@ -1,26 +1,58 @@
-package ru.dinis.documents.model;
+package ru.organization.documents.model.docs;
 
+import ru.organization.documents.model.staff.Person;
+
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+/**
+ * abstract class Document.
+ */
+@XmlRootElement
 public abstract class Document implements Comparable<Document> {
-
+    /**
+     * id of document.
+     */
     private int id;
 
+    /**
+     * name of document.
+     */
     private String name;
 
+    /**
+     * describe of document.
+     */
     private String describe;
 
+    /**
+     * registration number of document.
+     */
     private String regNumber;
 
+    /**
+     * registration date of document.
+     */
     private Date regDate;
 
+    /**
+     * author of document.
+     */
     private Person author;
 
-
+    /**
+     * method for comparable.
+     * @param o - object
+     * @return - number
+     */
     public int compareTo(Document o) {
         return this.regNumber.compareTo(o.getRegNumber());
     }
 
+    /**
+     * override toString().
+     * @return string
+     */
     @Override
     public String toString() {
         return this.name + " " + this.regNumber + " от " + this.regDate + " "

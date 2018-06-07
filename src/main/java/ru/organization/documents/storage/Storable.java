@@ -1,6 +1,6 @@
-package ru.dinis.documents.storage;
+package ru.organization.documents.storage;
 
-import ru.dinis.documents.model.Document;
+import ru.organization.documents.model.docs.Document;
 
 public interface Storable {
 

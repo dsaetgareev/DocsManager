@@ -1,24 +1,39 @@
-package ru.dinis.documents.model;
+package ru.organization.documents.model.docs;
+
+import ru.organization.documents.model.staff.Person;
 
 import java.util.Date;
 
+/**
+ * incoming document.
+ */
 public class Incoming extends Document {
-
+    /**
+     * sender of document.
+     */
     private Person sender;
 
+    /**
+     * destination of document.
+     */
     private Person destination;
-
+    /**
+     * outgoing number.
+     */
     private String outgoingNumber;
 
+    /**
+     * outgoing registration date.
+     */
     private Date outRegDate;
 
 
     @Override
     public String toString() {
-        return super.toString() + " Отправитель: " + this.sender.getName()
-                + ". Адресат: " + this.destination.getName()
-                + ". Исходящий номер: " + this.outgoingNumber
-                + ". Исходящая дата регистрации: " + this.outRegDate;
+        return super.toString() + "\n         - Отправитель: " + this.sender.getFullName()
+                + ".\n         - Адресат: " + this.destination.getFullName()
+                + ".\n         - Исходящий номер: " + this.outgoingNumber
+                + ".\n         - Исходящая дата регистрации: " + this.outRegDate;
     }
 
     public Person getSender() {
