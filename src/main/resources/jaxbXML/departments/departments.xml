@@ -1,0 +1,17 @@
+<departments>
+    <department>
+        <fullName>Администрация организации</fullName>
+        <shortName>AO</shortName>
+        <phones>3473333332, 3472666664</phones>
+    </department>
+    <department>
+        <fullName>Отдел кадров</fullName>
+        <shortName>OK</shortName>
+        <phones>3472222222, 3472444444</phones>
+    </department>
+    <department>
+        <fullName>Отдел производства</fullName>
+        <shortName>OP</shortName>
+        <phones>347333332, 3472455554</phones>
+    </department>
+</departments>
