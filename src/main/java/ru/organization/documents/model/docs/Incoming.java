@@ -5,25 +5,25 @@ import ru.organization.documents.model.staff.Person;
 import java.util.Date;
 
 /**
- * incoming document.
+ * входящий документ.
  */
 public class Incoming extends Document {
     /**
-     * sender of document.
+     * отправитель.
      */
     private Person sender;
 
     /**
-     * destination of document.
+     * адресат.
      */
     private Person destination;
     /**
-     * outgoing number.
+     * исходящий номер.
      */
     private String outgoingNumber;
 
     /**
-     * outgoing registration date.
+     * исходящая дата регистрации.
      */
     private Date outRegDate;
 

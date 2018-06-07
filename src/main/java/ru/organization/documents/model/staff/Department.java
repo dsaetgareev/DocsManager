@@ -3,28 +3,28 @@ package ru.organization.documents.model.staff;
 import java.util.List;
 
 /**
- * Department.
+ * департамент.
  */
 public class Department extends Staff {
     /**
-     * full name.
+     * полное имя.
      */
     private String fullName;
     /**
-     * short name.
+     * короткое наименование.
      */
     private String shortName;
     /**
-     * director.
+     * руководитель.
      */
     private Person director;
     /**
-     * phones.
+     * телефоны.
      */
     private String phones;
 
     /**
-     * persons
+     * сотрудники
      */
     private List<Person> persons;
 

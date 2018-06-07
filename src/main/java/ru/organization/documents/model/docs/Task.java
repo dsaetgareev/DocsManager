@@ -6,30 +6,30 @@ import ru.organization.documents.model.staff.Person;
 import java.util.Date;
 
 /**
- * task.
+ * поручения.
  */
 public class Task extends Document {
     /**
-     * extradition date of document.
+     * срок выдачи поручения.
      */
     private Date extraditionDate;
 
     /**
-     * deadline of document.
+     * срок сдачи поручения.
      */
     private Date deadline;
 
     /**
-     * executor.
+     * исполнитель.
      */
     private Person executor;
 
     /**
-     * is control.
+     * контроль.
      */
     private Boolean isControl;
     /**
-     * controller.
+     * контроллер.
      */
     private Person controller;
 

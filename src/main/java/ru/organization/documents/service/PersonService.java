@@ -5,20 +5,17 @@ import ru.organization.documents.converter.Converter;
 import ru.organization.documents.model.docs.Document;
 import ru.organization.documents.model.staff.Person;
 
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Collections;
 import java.util.List;
 
 /**
- * service for persons.
+ * сервис для сотрудников.
  */
 public class PersonService {
 
     /**
-     * a person
+     * сотрудник.
      */
     private Person person;
 
@@ -30,7 +27,7 @@ public class PersonService {
     }
 
     /**
-     * shows documents of a current person.
+     * представление документов для текущего сотрудника.
      */
     public void showDocuments(List<Document> documentList) {
         List<Document> documents = DocumentService.filtersDocumentsByPerson(documentList, this.person);
@@ -43,14 +40,19 @@ public class PersonService {
 
     }
 
+    /**
+     * записывание документов в файл.
+     * @param  - список документов
+     */
     public void writeDocuments(List<Document> documentList) {
         List<Document> documents = DocumentService.filtersDocumentsByPerson(documentList, this.person);
         String text = new Converter().converterToJson(documents);
         if (documents.size() != 0) {
             FileOutputStream fos = null;
             BufferedOutputStream bos = null;
+
             try {
-                fos = new FileOutputStream("src\\main\\resources\\outputFiles\\"
+                fos = new FileOutputStream("src" + File.separator + "main" + File.separator + "resources" + File.separator + "outputFiles" + File.separator
                         + this.person.getFullName() + ".txt");
                 bos = new BufferedOutputStream(fos);
                 byte[] buffer = text.getBytes();
@@ -74,8 +76,8 @@ public class PersonService {
 
 
     /**
-     * gets a full name of a current person.
-     * @return a full name
+     * полное имя сотрудника.
+     * @return полное имя
      */
     public String getFullName() {
         return this.person.getSurname() + " " + this.person.getFirstName() + " " + this.person.getPatronymic();

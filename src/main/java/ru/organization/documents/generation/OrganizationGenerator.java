@@ -8,14 +8,14 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 /**
- * class generating a organization.
+ * класс генерирует организацию.
  */
 public class OrganizationGenerator {
 
     /**
-     * get a organization from xml.
-     * @param pathXml - path to a xml folder
-     * @return organization
+     * получение организации из xml.
+     * @param pathXml - путь к xml файлу
+     * @return организация
      */
     public Organization getOrganizationFromXml(String pathXml) {
         Organization organization = null;
@@ -23,7 +23,8 @@ public class OrganizationGenerator {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(Organization.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            File file = new File("src\\main\\resources\\jaxbXML\\organization\\" + pathXml);
+            File file = new File("src" + File.separator + "main" + File.separator
+                    + "resources" + File.separator + "jaxbXML" + File.separator + "organization"+ File.separator + pathXml);
             organization = (Organization) unmarshaller.unmarshal(file);
 
         } catch (JAXBException e) {

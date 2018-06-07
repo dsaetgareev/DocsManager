@@ -9,14 +9,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
- * a container for departments.
+ * контейнер для департаментов.
  */
 @XmlRootElement(name = "departments")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DepartmentContainer {
 
     /**
-     * departments.
+     * департаменты.
      */
     @XmlElement(name = "department")
     private List<Department> departments;

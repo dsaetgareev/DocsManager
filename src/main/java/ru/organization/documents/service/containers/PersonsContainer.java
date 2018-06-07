@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.*;
 import java.util.List;
 
 /**
- * a container for persons.
+ * контейнер для сотрудников.
  */
 @XmlRootElement(name = "persons")
 @XmlAccessorType(XmlAccessType.FIELD)

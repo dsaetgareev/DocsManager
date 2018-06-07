@@ -6,42 +6,42 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
- * abstract class Document.
+ * абстрактный класс.
  */
 @XmlRootElement
 public abstract class Document implements Comparable<Document> {
     /**
-     * id of document.
+     * id документа.
      */
     private int id;
 
     /**
-     * name of document.
+     * наименование документа.
      */
     private String name;
 
     /**
-     * describe of document.
+     * описание документа.
      */
     private String describe;
 
     /**
-     * registration number of document.
+     * регистрационныый номер документа.
      */
     private String regNumber;
 
     /**
-     * registration date of document.
+     * дата регистрации документа.
      */
     private Date regDate;
 
     /**
-     * author of document.
+     * автор документа.
      */
     private Person author;
 
     /**
-     * method for comparable.
+     * метод сравнения.
      * @param o - object
      * @return - number
      */
@@ -49,10 +49,6 @@ public abstract class Document implements Comparable<Document> {
         return this.regNumber.compareTo(o.getRegNumber());
     }
 
-    /**
-     * override toString().
-     * @return string
-     */
     @Override
     public String toString() {
         return this.name + " " + this.regNumber + " от " + this.regDate + " "

@@ -11,32 +11,32 @@ import ru.organization.documents.service.OrganizationService;
 import java.util.List;
 
 /**
- * builds a organization structure.
+ * класс создает организационную структуру.
  */
 public class BuildApp {
 
     /**
-     * a current organization.
+     * текущая организация.
      */
     private Organization organization;
 
     /**
-     * a service for organization.
+     * сервис для организации.
      */
     private OrganizationService organizationService = new OrganizationService();
 
     /**
-     * a service for departments.
+     * сервис для департамента.
      */
     private DepartmentService departmentService = new DepartmentService();
 
     /**
-     * a generator for persons.
+     * генератор для persons.
      */
     private PersonGenerator personGenerator = new PersonGenerator();
 
     /**
-     *builds a organization structure.
+     * создание структуры организации.
      */
     public void buildStructure() {
         List<Department> departments = this.departmentService
@@ -48,28 +48,33 @@ public class BuildApp {
     }
 
     /**
-     * shows a welcome page.
+     * представление welcome страницы.
      */
     public void showWelcome() {
         this.organizationService.showOrganization(this.organization);
     }
 
     /**
-     * shows departments page.
-     * @param department - a current department
+     * представление страницы департамента.
+     * @param department - представляемый департамент
      */
     public void showDepartment(Department department, List<Document> documents) {
         this.departmentService.showDepartment(department, documents);
     }
 
+    /**
+     * записывает документ в файл.
+     * @param department - департамент
+     * @param documents - записываемые документы
+     */
     public void writeDocuments(Department department, List<Document> documents) {
         this.departmentService.writeDocuments(department, documents);
     }
 
     /**
-     * gets a department by id.
-     * @param index - index of a department
-     * @return a department
+     * получение департамента по id.
+     * @param index - индекс департамента
+     * @return департамент
      */
     public Department getDepartmentById(int index) {
         return this.organizationService.getDepartmentById(this.organization, index);

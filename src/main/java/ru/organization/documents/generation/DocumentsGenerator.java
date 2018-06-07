@@ -11,22 +11,22 @@ import ru.organization.documents.model.docs.Task;
 import java.util.*;
 
 /**
- * class generating documents for person.
+ * класс генерирует документы.
  */
 public class DocumentsGenerator {
 
     /**
-     * documents of all persons.
+     * документы всех сотрудников.
      */
     private List<Document> documents = new ArrayList<Document>();
 
     /**
-     * persons for whom documents are generating.
+     * сотрудники для которых будут генерироваться документы.
      */
     private List<Person> people;
 
     /**
-     * personService object for manipulating of person.
+     * сервис для persons.
      */
     private PersonService personService = new PersonService();
 
@@ -54,16 +54,16 @@ public class DocumentsGenerator {
     }
 
     /**
-     * randomly setting author for document.
-     * @return person - author of document
+     * случайно назначает автора.
+     * @return person - автор документа
      */
     public Person getAuthor() {
         return this.people.get(new Random().nextInt(people.size()));
     }
 
     /**
-     * randomly fill document.
-     * @param document - completed document
+     * заполнение документа случайными числами.
+     * @param document - заполненный документ
      */
     public void fillDocument(Document document) {
         document.setId(new Random().nextInt(100));
@@ -74,51 +74,51 @@ public class DocumentsGenerator {
     }
 
     /**
-     * method create document.
-     * @param className - class of document.
+     * создание документа.
+     * @param className - класс документа.
      */
     public void createDocument(String className) {
-        if (className.equals("Task")) {
+        if ("Task".equals(className)) {
             try {
-                Document task = new Task();
+                Task task = new Task();
                 this.fillDocument(task);
                 task.setName("Поручение");
                 task.setRegNumber(this.checkExistsDocument(this.genRegNumber()));
-                ((Task) task).setExtraditionDate(new Date());
-                ((Task) task).setDeadline(new Date(new Date().getTime() + new Random().nextInt(10) * (1000 * 60 * 60 * 24)));
-                ((Task) task).setExecutor(this.getAuthor());
-                ((Task) task).setControl(new Random().nextInt() > 0.5);
-                ((Task) task).setController(this.getAuthor());
+                task.setExtraditionDate(new Date());
+                task.setDeadline(new Date(new Date().getTime() + new Random().nextInt(10) * (1000 * 60 * 60 * 24)));
+                task.setExecutor(this.getAuthor());
+                task.setControl(new Random().nextInt() > 0.5);
+                task.setController(this.getAuthor());
                 this.documents.add(task);
             } catch (DocumentExistsException dee) {
                 dee.printStackTrace();
                 System.out.println("Введите название документа еще раз!");
             }
         }
-        if (className.equals("Incoming")) {
+        if ("Incoming".equals(className)) {
             try {
-                Document incoming = new Incoming();
+                Incoming incoming = new Incoming();
                 this.fillDocument(incoming);
                 incoming.setName("Входящий");
                 incoming.setRegNumber(this.checkExistsDocument(this.genRegNumber()));
-                ((Incoming) incoming).setSender(this.getAuthor());
-                ((Incoming) incoming).setDestination(this.getAuthor());
-                ((Incoming) incoming).setOutgoingNumber(new Random().nextInt() + "");
-                ((Incoming) incoming).setOutRegDate(new Date());
+                incoming.setSender(this.getAuthor());
+                incoming.setDestination(this.getAuthor());
+                incoming.setOutgoingNumber(new Random().nextInt() + "");
+                incoming.setOutRegDate(new Date());
                 this.documents.add(incoming);
             } catch (DocumentExistsException dee) {
                 dee.printStackTrace();
                 System.out.println("Введите название документа еще раз!");
             }
         }
-        if (className.equals("OutGoing")) {
+        if ("OutGoing".equals(className)) {
             try {
-                Document outgoing = new OutGoing();
+                OutGoing outgoing = new OutGoing();
                 this.fillDocument(outgoing);
                 outgoing.setName("Исходящий");
                 outgoing.setRegNumber(this.checkExistsDocument(this.genRegNumber()));
-                ((OutGoing) outgoing).setDestination(this.getAuthor());
-                ((OutGoing) outgoing).setDeliveryMethod("Электронный");
+                outgoing.setDestination(this.getAuthor());
+                outgoing.setDeliveryMethod("Электронный");
                 this.documents.add(outgoing);
             } catch (DocumentExistsException dee) {
                 dee.printStackTrace();
@@ -128,18 +128,18 @@ public class DocumentsGenerator {
     }
 
     /**
-     * generates registration number for document
-     * @return registration document
+     * генерация регестрационного номера
+     * @return номер документа
      */
     public String genRegNumber() {
         return "№" + Math.abs(new Random().nextInt(10));
     }
 
     /**
-     * checks the existing registration number of document.
-     * @param regNumber - checked number
-     * @return regNumber
-     * @throws DocumentExistsException - exception
+     * проверка номера документа на дубликаты.
+     * @param regNumber - проверяемый номер
+     * @return regNumber - номер документа
+     * @throws DocumentExistsException - возможное исключение
      */
     public String checkExistsDocument(String regNumber) throws DocumentExistsException {
        for (Document document : this.documents) {

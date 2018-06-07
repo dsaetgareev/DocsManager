@@ -9,33 +9,33 @@ import ru.organization.documents.model.staff.Person;
 import java.util.List;
 
 /**
- * service for a department.
+ * сервис для департамента.
  */
 public class DepartmentService {
     /**
-     * generator for department.
+     * генератор департаментов.
      */
     private DepartmentGenerator generator = new DepartmentGenerator();
 
     /**
-     * service for a person.
+     * сервис для сотрудников.
      */
     private PersonService personService = new PersonService();
 
     /**
-     * gets departments from a xml file.
+     * получение департаментов из xml файлв.
      *
-     * @param pathXml - path to a xml file
-     * @return list departments.
+     * @param pathXml - путь к xml файлу
+     * @return спсок депатаментов.
      */
     public List<Department> getDepartments(String pathXml) {
         return this.generator.getDepartmentsFromXml(pathXml);
     }
 
     /**
-     * fills persons for a department.
+     * заполняет сотрудников для департамента.
      *
-     * @param department - current department
+     * @param department - департамент для сотрудников
      */
     public void fillPersonsForDepartment(Department department) {
         List<Person> personList = PersonGenerator
@@ -44,10 +44,10 @@ public class DepartmentService {
     }
 
     /**
-     * method gets department from a xml file and fills persons for all departments.
+     * метод получает департаменты из xml файла и заполняет его сотрудниками.
      *
-     * @param pathXml - path to a xml file
-     * @return departments list
+     * @param pathXml - путь к xml файлу
+     * @return список департаментов
      */
     public List<Department> getDepartmentsAndFillPersonsForAllDepartments(String pathXml) {
         List<Department> departments = this.getDepartments(pathXml);
@@ -59,9 +59,9 @@ public class DepartmentService {
     }
 
     /**
-     * sets director.
+     * назначает директора.
      *
-     * @param department - department
+     * @param department - департамент
      */
     public void setDirector(Department department) {
         for (Person person : department.getPersons()) {
@@ -72,9 +72,9 @@ public class DepartmentService {
     }
 
     /**
-     * show department.
+     * представление для департамента.
      *
-     * @param department - department
+     * @param department - департамент
      */
     public void showDepartment(Department department, List<Document> documents) {
         System.out.println("\n" + department.toString());
@@ -85,6 +85,11 @@ public class DepartmentService {
         }
     }
 
+    /**
+     * записывает документы в файлю
+     * @param department - департамент
+     * @param documents - записываемые документы
+     */
     public void writeDocuments(Department department, List<Document> documents) {
         for (Person person : department.getPersons()) {
             this.personService.setPerson(person);

@@ -3,16 +3,16 @@ package ru.organization.documents.model.docs;
 import ru.organization.documents.model.staff.Person;
 
 /**
- * outgoing document.
+ * исходящий документ.
  */
 public class OutGoing extends Document {
 
     /**
-     * destination of document.
+     * адресат.
      */
     private Person destination;
     /**
-     * delivery method.
+     * метод отправки.
      */
     private String deliveryMethod;
 

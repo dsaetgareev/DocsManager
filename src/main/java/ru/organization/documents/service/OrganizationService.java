@@ -5,27 +5,27 @@ import ru.organization.documents.model.staff.Department;
 import ru.organization.documents.model.staff.Organization;
 
 /**
- * service for organizations.
+ * сервис для организации.
  */
 public class OrganizationService {
 
     /**
-     * generator for organization.
+     * генератор организации.
      */
     private OrganizationGenerator generator = new OrganizationGenerator();
 
     /**
-     * gets organization from a xml file.
-     * @param pathXml - path to a xml file
-     * @return a organization.
+     * получение организации из xml файла.
+     * @param pathXml - путь к xml файлу
+     * @return организация.
      */
     public Organization getOrganization(String pathXml) {
         return this.generator.getOrganizationFromXml(pathXml);
     }
 
     /**
-     * sets a director for a organization.
-     * @param organization - current organization
+     * устанавливает директора для организации.
+     * @param organization - организация
      */
     public void setDirector(Organization organization) {
         for (Department department : organization.getDepartments()) {
@@ -36,8 +36,8 @@ public class OrganizationService {
     }
 
     /**
-     * shows organization.
-     * @param organization - current organization
+     * представление для организации.
+     * @param organization - организация
      */
     public void showOrganization(Organization organization) {
         System.out.println("Здравствуйте, вы находитесь на странице " + organization.getShortName());
@@ -52,10 +52,10 @@ public class OrganizationService {
     }
 
     /**
-     * gets a department by id.
-     * @param organization - current organization
+     * получение департамента по id.
+     * @param organization - организация
      * @param id - id
-     * @return a department
+     * @return департамент
      */
     public Department getDepartmentById(Organization organization, int id) {
         return organization.getDepartments().get(id);

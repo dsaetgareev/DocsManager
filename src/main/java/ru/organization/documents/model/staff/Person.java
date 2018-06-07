@@ -6,26 +6,26 @@ import javax.xml.bind.annotation.*;
 
 
 /**
- * person.
+ * сотрудник.
  */
 @XmlType(name="")
 public class Person extends Staff {
 
     /**
-     * surname
+     * фамилия.
      */
     private String surname;
 
     /**
-     * first name.
+     * имя.
      */
     private String firstName;
     /**
-     * patronymic.
+     * отчество.
      */
     private String patronymic;
     /**
-     * position.
+     * должность.
      */
     private String position;
 
@@ -34,8 +34,8 @@ public class Person extends Staff {
     }
 
     /**
-     * return full Name.
-     * @return full name
+     * полное имя.
+     * @return полное имя
      */
     public String getFullName() {
         return this.surname + " " + this.firstName + " " + this.patronymic;

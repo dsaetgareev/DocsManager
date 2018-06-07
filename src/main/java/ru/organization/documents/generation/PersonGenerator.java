@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * class generation of person from xml.
+ * класс генерирует сотрудника из xml.
  */
 public class PersonGenerator {
 
     /**
-     * get persons list from xml.
-     * @param pathXml - path to xml folder
-     * @return persons list
+     * получение сотрудника из xml.
+     * @param pathXml - путь к xml файлу
+     * @return лист сотрудников
      */
     public static List<Person> getPersonsFromXml(String pathXml) {
         List<Person> authors = new ArrayList<Person>();
@@ -27,7 +27,8 @@ public class PersonGenerator {
             JAXBContext jaxbContext = JAXBContext.newInstance(PersonsContainer.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-            File file = new File("src\\main\\resources\\jaxbXML\\persons\\" + pathXml);
+            File file = new File("src" + File.separator + "main" + File.separator
+                    + "resources" + File.separator + "jaxbXML" + File.separator + "persons"+ File.separator + pathXml);
 
             PersonsContainer authors1 = (PersonsContainer) unmarshaller.unmarshal(file);
 

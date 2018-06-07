@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * class generating a department from xml
+ * класс генерирует департамент из xml файла.
  */
 public class DepartmentGenerator {
 
     /**
-     * get a department from xml.
-     * @param pathXml - path to a xml folder
-     * @return department
+     * получение департамента из xml.
+     * @param pathXml - путь к xml
+     * @return департамент
      */
     public List<Department> getDepartmentsFromXml(String pathXml) {
         List<Department> departments = new ArrayList<Department>();
@@ -26,7 +26,8 @@ public class DepartmentGenerator {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(DepartmentContainer.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-            File file = new File("src\\main\\resources\\jaxbXML\\departments\\" + pathXml);
+            File file = new File("src" + File.separator + "main" + File.separator
+                    + "resources" + File.separator + "jaxbXML" + File.separator + "departments"+ File.separator + pathXml);
             DepartmentContainer departmentContainer = (DepartmentContainer) unmarshaller.unmarshal(file);
             departments = departmentContainer.getDepartments();
             System.out.println("Create departments: " + departments.size());
